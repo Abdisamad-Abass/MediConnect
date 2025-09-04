@@ -19,6 +19,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/admin", require("./routes/adminRoute"));
 
+app.get('/',(req,res)=>{
+    res.send('API WORKING')
+})
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

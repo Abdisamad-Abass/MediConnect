@@ -5,10 +5,13 @@ import { useState } from "react";
 
 const Doctors_List = () => {
   const [doctors, setDoctors] = useState([]);
+  const backendUrl = import.meta.env.VITE_API_URL;
+
+
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/api/admin/doctors");
+        const res = await axios.get(`${backendUrl}/api/admin/doctors`);
         setDoctors(res.data);
       } catch (error) {
         console.error("Error fetching doctors:", error);

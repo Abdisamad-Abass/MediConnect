@@ -9,12 +9,13 @@ const Booking = () => {
   const [selectedDayIndex, setSelectedDayIndex] = useState(0);
   const [selectedTime, setSelectedTime] = useState("");
   const { id } = useParams();
+  const backendUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:4000/api/admin/doctors/${id}`,
+          `${backendUrl}/api/admin/doctors/${id}`,
         );
         setDoctor(res.data);
       } catch (error) {
@@ -76,7 +77,7 @@ const Booking = () => {
     }
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/users/appointment",
+        `${backendUrl}/api/users/appointment`,
         {
           doctorId: id,
           doctorName: doctor.name,

@@ -4,6 +4,8 @@ import { assets } from "../assets/assets";
 import { toast } from "react-toastify";
 
 function Add_Doctor() {
+  const backendUrl = import.meta.env.VITE_API_URL;
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -54,7 +56,7 @@ function Add_Doctor() {
 
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/admin/add-doctor",
+        `${backendUrl}/api/admin/add-doctor`,
         data,
         {
           headers: { "Content-Type": "multipart/form-data" },

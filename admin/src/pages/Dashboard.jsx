@@ -7,6 +7,8 @@ const Dashboard = () => {
   const [doctors, setDoctors] = useState([]);
   const [users, setUsers] = useState([]);
   const [appointments, setAppointments] = useState([])
+  const backendUrl = import.meta.env.VITE_API_URL;
+
   const cards = [
     { title: "Total Doctors", count: doctors.length },
     { title: "Users", count: users.length },
@@ -16,7 +18,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/api/admin/doctors");
+        const res = await axios.get(`${backendUrl}/api/admin/doctors`);
         setDoctors(res.data);
       } catch (error) {
         console.error("Error fetching doctors:", error);
@@ -30,7 +32,7 @@ const Dashboard = () => {
     const fetchUsers = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:4000/api/users/all-users",
+          `${backendUrl}/api/users/all-users`,
         );
         setUsers(res.data);
       } catch (error) {
@@ -44,7 +46,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/api/users/all-appointments")
+        const res = await axios.get(`${backendUrl}/api/users/all-appointments`)
         setAppointments(res.data)
       } catch (error) {
         console.error(error)

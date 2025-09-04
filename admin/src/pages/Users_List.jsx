@@ -5,12 +5,13 @@ import { toast } from "react-toastify";
 
 const Users_List = () => {
   const [users, setUsers] = useState([]);
+  const backendUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:4000/api/users/all-users",
+          `${backendUrl}/api/users/all-users`,
         );
         setUsers(res.data);
       } catch (error) {
@@ -29,7 +30,7 @@ const Users_List = () => {
     if (newUsername || newEmail || newPassword) {
       try {
         const res = await axios.put(
-          `http://localhost:4000/api/users/all-users/${id}`,
+          `${backendUrl}/api/users/all-users/${id}`,
           {
             username: newUsername,
             email: newEmail,

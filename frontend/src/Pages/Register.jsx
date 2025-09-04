@@ -6,7 +6,9 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const [isLogin, setIsLogin] = useState(false);
-   const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const backendUrl = import.meta.env.VITE_API_URL;
+   
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -19,8 +21,8 @@ const Register = () => {
     e.preventDefault();
     try {
       const endpoint = isLogin
-        ? "http://localhost:4000/api/users/login"
-        : "http://localhost:4000/api/users/register";
+        ? `${backendUrl}/api/users/login`
+        : `${backendUrl}/api/users/register`;
 
       const res = await fetch(endpoint, {
         method: "POST",

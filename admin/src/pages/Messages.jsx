@@ -7,6 +7,7 @@ const Message = () => {
   const [messages, setMessages] = useState([]);
   const [error, setError] = useState("");
   const messagesEndRef = useRef(null);
+  const backendUrl = import.meta.env.VITE_API_URL;
 
   // Send message
   const handleSendMessage = async () => {
@@ -17,7 +18,7 @@ const Message = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/admin/send-message-to-user",
+        `${backendUrl}/api/admin/send-message-to-user`,
         {
           content: inputMessage,
           messageType: "text",
@@ -43,7 +44,7 @@ const Message = () => {
     const fetchMessages = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:4000/api/users/receive-message-from-user"
+          `${backendUrl}/api/users/receive-message-from-user`
         );
 
         // Merge messages without overwriting

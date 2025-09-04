@@ -5,13 +5,14 @@ import { toast } from "react-toastify";
 
 const Appointments = () => {
   const [appointments, setAppointments] = useState([]);
+  const backendUrl = import.meta.env.VITE_API_URL;
 
   //Booking appointment fetching
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:4000/api/users/all-appointments",
+          `${backendUrl}/api/users/all-appointments`,
         );
         setAppointments(res.data);
       } catch (error) {
@@ -28,7 +29,7 @@ const Appointments = () => {
       return;
     try {
       await axios.delete(
-        `http://localhost:4000/api/users/all-appointments/${id}`,
+        `${backendUrl}/api/users/all-appointments/${id}`,
       );
       setAppointments((prev) => prev.filter((appt) => appt._id !== id));
       toast.success("Appointment deleted successfully.");
