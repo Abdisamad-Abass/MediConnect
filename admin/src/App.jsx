@@ -4,11 +4,11 @@ import Add_Doctor from "./pages/Add_Doctor";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Sidebar from "./components/sidebar";
 import Doctors_List from "./pages/Doctors_List";
 import Users_List from "./pages/Users_List";
 import Appointments from "./pages/Appointments";
 import Messages from "./pages/Messages";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
